@@ -17,6 +17,7 @@ class Comparator
     diff = []
     lines.each_with_index do |line, index|
       next if line[0] == line[1]
+      next if ignored.include?(index)
       diff.push({number: index, '1': line[0], '2': line[1]})
     end
     return true if diff.empty?
